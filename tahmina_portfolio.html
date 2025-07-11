@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tahmina Mojumder - Data Scientist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #035d5e 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #035d5e;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-content .description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #333;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #333;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            position: relative;
+            z-index: 1;
+            border-radius: 20px 20px 0 0;
+            margin-top: -20px;
+            padding: 80px 0;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .profile-placeholder {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #035d5e 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(102, 126, 234, 0.9);
+            padding: 1rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: #f8f9fa;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #035d5e 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .project-image.has-image {
+            background-image: none;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(102, 126, 234, 0.9);
+            padding: 1rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .project-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            text-decoration: none;
+            color: #035d5e;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-links a:hover {
+            color: #764ba2;
+        }
+
+
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #035d5e;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            background: #764ba2;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#home" class="logo">Tahmina Mojumder</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Tahmina Mojumder</h1>
+                <p class="subtitle">Data Scientist</p>
+                <p class="description">
+                    MSc Computational Science student with expertise in machine learning, statistical analysis, and software development. 
+                    Passionate about solving complex problems through data-driven solutions and innovative software.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <div class="profile-placeholder">
+                            <!-- Replace with your actual image -->
+                            <!-- <img src="path/to/your/photo.jpg" alt="Tahmina Mojumder"> -->
+                            <div class="profile-text">Your Photo Here</div>
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <h3>Hello! I'm Tahmina</h3>
+                        <p>
+                            I'm a passionate data scientist and software developer currently pursuing my Master's in Computational Science at the University of Regensburg. 
+                            With a unique dual degree background in Mathematics and Computer Science, I bring a strong analytical foundation to complex problem-solving.
+                        </p>
+                        <p>
+                            My professional journey includes developing automation tools, implementing machine learning solutions, and creating data-driven applications. 
+                            I'm authorized to work in Germany and actively seeking opportunities to contribute to innovative projects in data science and software development.
+                        </p>
+                        <p>
+                            Beyond coding, I'm involved in creative pursuits through Shikorh, where I've led performance groups and contributed to publications, 
+                            showcasing my leadership skills and well-rounded personality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects">
+            <div class="container">
+                <h2>Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <!-- Replace with your actual project image -->
+                            <!-- <img src="path/to/simulatr-screenshot.png" alt="simulatr R Package"> -->
+                            <div class="project-placeholder">simulatr R Package</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>simulatr</h3>
+                            <p>A comprehensive R package for generating synthetic data with detailed documentation and unit tests. Designed for researchers and data scientists who need reliable synthetic datasets.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">R</span>
+                                <span class="tech-tag">Package Development</span>
+                                <span class="tech-tag">Unit Testing</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/TahminaMojumder" target="_blank">View Code</a>
+                                <a href="#" target="_blank">Documentation</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <!-- Replace with your actual project image -->
+                            <!-- <img src="path/to/bucketfuser-screenshot.png" alt="BucketFuser ML Project"> -->
+                            <div class="project-placeholder">BucketFuser ML Project</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>BucketFuser</h3>
+                            <p>Advanced machine learning project focusing on AKI Plasma Dataset analysis. Implemented the Bucket Fuser method with hyperparameter optimization and comprehensive reporting.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Machine Learning</span>
+                                <span class="tech-tag">Data Analysis</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/TahminaMojumder" target="_blank">View Code</a>
+                                <a href="#" target="_blank">Report</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <!-- Replace with your actual project image -->
+                            <!-- <img src="path/to/thesis-screenshot.png" alt="Master's Thesis Research"> -->
+                            <div class="project-placeholder">Master's Thesis Research</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>XAI for Trait-Trait Interaction</h3>
+                            <p>Research project investigating explainable AI methods for analyzing trait-trait interactions. Compared statistical and ML approaches for trait-matching problems.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">XAI</span>
+                                <span class="tech-tag">Statistical Analysis</span>
+                                <span class="tech-tag">Research</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank">View Research</a>
+                                <a href="#" target="_blank">Results</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <!-- Replace with your actual project image -->
+                            <!-- <img src="path/to/hackathon-screenshot.png" alt="Hackathon Winner"> -->
+                            <div class="project-placeholder">🏆 Hackathon Winner</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Anomaly Detection System</h3>
+                            <p>Award-winning hackathon project at Hackaburg 2023. Developed an image-based anomaly detection system for identifying defective parts in manufacturing processes.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Computer Vision</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Machine Learning</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank">View Demo</a>
+                                <a href="https://github.com/TahminaMojumder" target="_blank">Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <!-- Replace with your actual project image -->
+                            <!-- <img src="path/to/rshiny-screenshot.png" alt="RShiny Automation"> -->
+                            <div class="project-placeholder">RShiny Automation</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Data Entry Automation</h3>
+                            <p>Enterprise RShiny application developed at Vitesco Technologies to automate data entry processes, significantly improving operational efficiency.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">R</span>
+                                <span class="tech-tag">Shiny</span>
+                                <span class="tech-tag">Automation</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" target="_blank">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <!-- Replace with your actual project image -->
+                            <!-- <img src="path/to/python-converter-screenshot.png" alt="Product Code Converter"> -->
+                            <div class="project-placeholder">Product Code Converter</div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Python Code Converter</h3>
+                            <p>Python application that converts complex product codes into human-readable formats, streamlining workflow processes in industrial settings.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">GUI</span>
+                                <span class="tech-tag">Enterprise</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/TahminaMojumder" target="_blank">View Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <div class="contact-content">
+                    <p>I'm always interested in new opportunities and collaborations. Whether you have a project in mind or just want to connect, I'd love to hear from you!</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span>📍</span>
+                            <span>Regensburg, Germany</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>📧</span>
+                            <span>Available upon request</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>🇩🇪</span>
+                            <span>Authorized to work in Germany</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/TahminaMojumder" target="_blank">GH</a>
+                        <a href="https://www.linkedin.com/in/tahmina-mojumder-12100410b" target="_blank">IN</a>
+                        <a href="mailto:contact@example.com">✉</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Tahmina Mojumder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to navigation links based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add scroll effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
