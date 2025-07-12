@@ -179,7 +179,7 @@
             width: 250px;
             height: 250px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #035d5e 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1d1d1d 0%, #585a61 100%); 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -194,7 +194,8 @@
         .profile-placeholder img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            object-position: center;
         }
 
         .profile-text {
@@ -227,13 +228,13 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(1, 1fr);
             gap: 2rem;
         }
 
         @media (max-width: 1024px) {
             .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(1, 1fr);
             }
         }
 
@@ -257,12 +258,13 @@
         }
 
         .project-image {
-            height: 200px;
-            background: linear-gradient(135deg, #035d5e 0%, #764ba2 100%);
+            height: 400px;
+            background: white;
+            <!-- linear-gradient(135deg, #035d5e 0%, #764ba2 100%); -->
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: black;
             font-weight: 600;
             font-size: 1.1rem;
             background-size: cover;
@@ -277,7 +279,9 @@
         .project-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            object-position: center;
+            padding-right: 8px; 
         }
 
         .project-placeholder {
@@ -485,8 +489,8 @@
                     <div class="about-image">
                         <div class="profile-placeholder">
                             <!-- Replace with your actual image -->
-                            <!-- <img src="path/to/your/photo.jpg" alt="Tahmina Mojumder"> -->
-                            <div class="profile-text">Your Photo Here</div>
+                            <img src="inst/Propic_square.jpg" alt="Tahmina Mojumder"> 
+                            <!-- <div class="profile-text">Your Photo</div> -->
                         </div>
                     </div>
                     <div class="about-text">
@@ -538,7 +542,7 @@
                         <div class="project-image">
                             <!-- Replace with your actual project image -->
                             <!-- <img src="path/to/bucketfuser-screenshot.png" alt="BucketFuser ML Project"> -->
-                            <div class="project-placeholder">BucketFuser ML Project</div>
+                            <div class="project-placeholder">BucketFuser</div>
                         </div>
                         <div class="project-content">
                             <h3>BucketFuser</h3>
@@ -558,11 +562,12 @@
                     <div class="project-card">
                         <div class="project-image">
                             <!-- Replace with your actual project image -->
-                            <!-- <img src="path/to/thesis-screenshot.png" alt="Master's Thesis Research"> -->
-                            <div class="project-placeholder">Master's Thesis Research</div>
+                            <img src="inst/Picture2.png" alt="Master's Thesis"> 
+                            <!-- <div class="project-placeholder">Master's Thesis Research</div> -->
                         </div>
                         <div class="project-content">
-                            <h3>XAI for Trait-Trait Interaction</h3>
+                            <h3>Machine Learning approach to solve trait-matching problem: impediments and possibilities
+                            </h3>
                             <p>Research project investigating explainable AI methods for analyzing trait-trait interactions. Compared statistical and ML approaches for trait-matching problems.</p>
                             <div class="project-tech">
                                 <span class="tech-tag">XAI</span>
